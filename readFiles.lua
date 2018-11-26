@@ -37,12 +37,14 @@ function readFiles.readAFile(fileName,intermediateDir, boundByMaxChar)
    -- WARNING it might be dangerous that no error is returned when the filename is nil (which happens when the counter is beyond the end of the corpus. Here, readAFile is intended to return a dummy file consisting of "1")
    
    if fileName == nil then
+--      print("Nil filename")
       fileName = "DUMMYFILETHATSHOULDNOTEXIST"
    end
    --print(fileName) 
    local filePath = readDict.corpusDir..intermediateDir..fileName
 
    if(not (readFiles.fileExists(filePath))) then
+     print("File doesn't exist (readFiles.lua:46): "..filePath)
      local text = {}
      table.insert(text,1)
      return text
